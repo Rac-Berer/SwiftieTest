@@ -8,6 +8,7 @@ actions = {
     "taylor": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
     "tay": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
     "t swift": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
+    "swifty": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
     "t-sweezy": (2, "You've scored a Blank Space on the scoreboard! One point for good taste and another for knowing her Rap name!"),
     "tsweezy": (2, "You've scored a Blank Space on the scoreboard! One point for good taste and another for knowing her Rap name!"),
     "t sweezy": (2, "You've scored a Blank Space on the scoreboard! One point for good taste and another for knowing her Rap name!"),
@@ -32,7 +33,7 @@ print("You have " + str(result) + " points so far!")
 firstSong = input("What was the first song she wrote? ").lower()
 match firstSong:
     case "lucky you":
-        result += 2
+        result += 1
         print("Nailed it! Just like a Love Story! You're Enchanted to score that point!")
     case "tim mcgraw":
         result = result
@@ -63,6 +64,74 @@ else:
     print("That answer wasn’t Ready for It, but keep going!")
 
 print("You have " + str(result) + " points so far!")
+
+
+# Prompt for Taylor's birthdate
+date = input("When was Taylor born? ").lower()
+
+birthDate = [
+    "december 13, 1989",
+    "13 december 1989",
+    "12/13/1989",
+    "13/12/1989",
+    "12-13-1989",
+    "13-12-1989",
+    "12/13/89",
+    "13/12/89",
+    "12-13-89",
+    "13-12-89",
+    "dec 13 1989",
+    "13 dec 1989",
+    "13th of december, 1989",
+    "december 13th, 1989",
+    "december 13 1989",
+    "13th of december 1989",
+    "december 13th 1989"
+]
+
+birthday = [
+    "december 13",
+    "dec 13",
+    "13th of december",
+    "13th of dec",
+    "13 of december",
+    "13 of dec",
+    "december 13th",
+    "dec 13th",
+    "12/13",
+    "13/12"
+]
+
+if date in birthDate:
+    print("Another point for you! We’re feeling 22!")
+    result += 1
+elif date in birthday:
+    year = input("Yes, but what year? ")
+    if year == "1989":
+        print("You're right, that answer will never to out of Style!")
+        result += 1
+    else:
+        print("No, but I'll give you a hint, it's the name of her 5th album!")
+elif date == "1989":
+    date2 = input("That's the year but what day? ")
+    if date2 in birthday:
+        result +=1
+        print("That’s a hit! You get a point for style and grace!")
+    else:
+        print("Incorrect, but hey, you're fearless, keep going!")
+else:
+    print("Incorrect, but hey, you’re fearless, keep going!")
+
+print("You have " + str(result) + " points so far!")
+
+
+
+
+
+
+
+
+
 
 
 # 4. Handling interruption question
