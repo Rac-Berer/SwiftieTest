@@ -29,7 +29,7 @@ else:
 print("You have " + str(result) + " points so far!")
 
 
-# 1. Using match/case for first song written
+# Using match/case for first song written
 firstSong = input("What was the first song she wrote? ").lower()
 match firstSong:
     case "lucky you":
@@ -43,7 +43,7 @@ match firstSong:
         print("Nice try, but I knew you were Trouble when you said that! Actually, 'Lucky You' was her first written song. Shake it off and try again later!")
 print("You have " + str(result) + " points so far!")
 
-# 2. The age when Taylor wrote her first song.
+# The age when Taylor wrote her first song.
 age = input("How old was she when she wrote 'Lucky You'? ").lower()
 if age == "12" or age == "twelve":
     result += 1
@@ -55,7 +55,7 @@ else:
 print("You have " + str(result) + " points so far!")
 
 
-# 3. Using if/else
+# Using if/else for middle name
 middleName = input("What is Taylor's middle name? ").lower()
 if middleName == "alison":
     result += 1
@@ -126,15 +126,37 @@ print("You have " + str(result) + " points so far!")
 
 
 
+# Initialize the list of Taylor Swift's cats
+catNames = ["olivia benson", "detective olivia benson", "meredith grey", "benjamin button"]
+
+while catNames:
+    cat = input("Can you name Taylor's cats? ").lower()
+    if cat in catNames:
+        catNames.remove(cat)
+        print(f"Flawless, {cat.title()} is one of her furbabies, can you guess all of them?")
+        if cat == "olivia benson" or cat == "detective olivia benson":
+            if "olivia benson" in catNames:
+                catNames.remove("olivia benson")
+            if "detective olivia benson" in catNames:
+                catNames.remove("detective olivia benson")
+            result +=1
+    elif cat == "olivia" or cat == "meredith" or cat == "benjamin":
+        print("Almost there, but not quite hitting the high note meow! type 'SETKAM' to skip.")
+    elif cat == "setkam":
+        print("Until next time—meow you later!")
+        break
+    else:
+        print(f"Sorry, {cat} isn't one of them. Shake it off and try again. If you want to skip this, enter 'SETKAM'.")
+
+if not catNames:
+    print("Congratulations! You've guessed them all!")
+print("You have " + str(result) + " points so far!")
 
 
 
 
 
-
-
-
-# 4. Handling interruption question
+# Handling interruption question
 interruption = input("Who interrupted Taylor's acceptance speech when she was still just a teen? ").lower()
 match interruption:
     case "kanye west" | "kanye":
@@ -146,7 +168,7 @@ match interruption:
 print("You have " + str(result) + " points so far!")
 
 
-# 5. Handling false endorsement question
+# Handling false endorsement question
 falseEndorse = input("Who posted AI of Taylor falsely endorsing them? ").lower()
 match falseEndorse:
     case "donald trump" | "trump":
