@@ -1,4 +1,4 @@
-# Prompt for favorite artist:
+# 1. Prompt for favorite artist:
 # Set variable and start it at 0
 artist = input("Who's your Favorite Artist? ").lower()
 result = 0
@@ -7,6 +7,7 @@ actions = {
     "taylor swift": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
     "taylor": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
     "tay": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
+    "tay swift": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
     "t swift": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
     "swifty": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
     "t-sweezy": (2, "You've scored a Blank Space on the scoreboard! One point for good taste and another for knowing her Rap name!"),
@@ -29,7 +30,7 @@ else:
 print("You have " + str(result) + " points so far!")
 
 
-# Using match/case for first song written
+# 2. Using match/case for first song written
 firstSong = input("What was the first song she wrote? ").lower()
 match firstSong:
     case "lucky you":
@@ -43,7 +44,7 @@ match firstSong:
         print("Nice try, but I knew you were Trouble when you said that! Actually, 'Lucky You' was her first written song. Shake it off and try again later!")
 print("You have " + str(result) + " points so far!")
 
-# The age when Taylor wrote her first song.
+# 3. The age when Taylor wrote her first song.
 age = input("How old was she when she wrote 'Lucky You'? ").lower()
 if age == "12" or age == "twelve":
     result += 1
@@ -55,18 +56,20 @@ else:
 print("You have " + str(result) + " points so far!")
 
 
-# Using if/else for middle name
+# 4. Using if/else for middle name
 middleName = input("What is Taylor's middle name? ").lower()
 if middleName == "alison":
     result += 1
     print("Correct! It's like we're living in a fairy tale!")
+elif middleName == "allison":
+    print("You're almost there, just a few notes off!")
 else:
     print("That answer wasn’t Ready for It, but keep going!")
 
 print("You have " + str(result) + " points so far!")
 
 
-# Prompt for Taylor's birthdate
+# 5. Prompt for Taylor's birthdate
 date = input("When was Taylor born? ").lower()
 
 birthDate = [
@@ -126,11 +129,11 @@ print("You have " + str(result) + " points so far!")
 
 
 
-# Initialize the list of Taylor Swift's cats
+# 6. Initialize the list of Taylor Swift's cats and while loop for guesses
 catNames = ["olivia benson", "detective olivia benson", "meredith grey", "benjamin button"]
 
 while catNames:
-    cat = input("Can you name Taylor's cats? ").lower()
+    cat = input("Can you name all 3 of Taylor's cats? ").lower()
     if cat in catNames:
         catNames.remove(cat)
         print(f"Flawless, {cat.title()} is one of her furbabies, can you guess all of them?")
@@ -154,26 +157,75 @@ print("You have " + str(result) + " points so far!")
 
 
 
+# 7. Name her parents
+parents = ["andrea finlay", "andrea", "scott kingsley swift", "scott swift", "scott kingsley", "scott"]
+
+while parents:
+    parent = input("Do you know her parents' names? ").lower()
+    if parent in parents:
+        parents = [p for p in parents if parent not in p]
+        if "andrea" in parent:
+            result += 1
+            print(f"You're The Man! {parent.title()} is her mother")
+            parents.remove(parent)
+        elif "scott" in parent:
+            result += 1
+            print(f"You're The Man! {parent.title()} is her father")
+
+    elif "andrea" in parent and "scott" in parent:
+        result += 2
+        print(f"You're The Man! Her parents are indeed Andrea and Scott!")
+        break
+    elif parent == "thebestday":
+        print("Have yourself The Best Day!")
+        break
+    else:
+        print("I think there's been a Glitch! Maybe try something else next time. Type 'TheBestDay' if you want to skip")
+print("You have " + str(result) + " points so far!")
 
 
-# Handling interruption question
-interruption = input("Who interrupted Taylor's acceptance speech when she was still just a teen? ").lower()
-match interruption:
-    case "kanye west" | "kanye":
+
+# 8. Early Inspiration
+influences = ["the chicks", "shania twain", "tim mcgraw"]
+while influences:
+    influence = input("Who were early Insperations for Taylor starting country music? ").lower()
+    if influence in influences:
+        influences = [p for p in influences if influence not in p]
         result += 1
         print("You’re right, you never go out of Style!")
-    case _:
-        result = result
-        print("Oops, not quite, you need to shake it off and try again!")
+    elif influence == '2006':
+        print("Teardrops on my Quiz!")
+        break    
+    else:
+        print("Oops, not quite, shake it off and try again! Type '2006' to skip")
 print("You have " + str(result) + " points so far!")
 
 
-# Handling false endorsement question
-falseEndorse = input("Who posted AI of Taylor falsely endorsing them? ").lower()
-match falseEndorse:
-    case "donald trump" | "trump":
-        result += 1
+# 9. Instruments Taylor plays:
+instruments = ["guitar", "piano", "ukulele", "electric guitar", "banjo"]
+
+while instruments:
+    instrument = input("What instruments does Taylor know how to play? ").lower()
+    if instrument in instruments:
+        instruments.remove(instrument)
         print("That’s spot-on! You earned a point, superstar!")
-    case _:
-        print("Sorry, that’s not correct. The right answer is Donald Trump. This led to her publicly sharing who she was voting for.")
+        result += 1
+    elif instrument == "talented":
+        print("Hell yeah she's talented, but onto the next question.")
+    else:
+        print(f" Sorry, {instrument} is not one (that I know of). Type 'talented' to stop guessing.")
+
 print("You have " + str(result) + " points so far!")
+
+# 10. Favorite Dessert (mine too)
+dessert = input("What is Taylor's favorite dessert? ").lower()
+match dessert:
+    case "cheesecake":
+        result +=1
+        print("Aren't you sweeter than sweet tea in the summer, another point for you!")
+    case _:
+        print("Not according to my source, however I unfortunately don't personally know Taylor.")
+print("You have " + str(result) + " points so far!")
+
+
+# 11.  
