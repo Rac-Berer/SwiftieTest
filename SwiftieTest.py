@@ -3,7 +3,7 @@
 artist = input("Who's your Favorite Artist? ").lower()
 result = 0
 
-actions = {
+names = {
     "taylor swift": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
     "taylor": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
     "tay": (1, "You've scored a Blank Space on the scoreboard! One point for you!\n1, 2, 3, Let's go, Bitch!"),
@@ -18,8 +18,8 @@ actions = {
     "tswizzle": (2, "You've scored a Blank Space on the scoreboard! One point for good taste and another for knowing her Rap name!")
 }
 
-if artist in actions:
-    points, message = actions[artist]
+if artist in names:
+    points, message = names[artist]
     result += points
     print(message)
     if points == 2:
@@ -70,29 +70,31 @@ print("You have " + str(result) + " points so far!")
 
 
 # 5. Prompt for Taylor's birthdate
-date = input("When was Taylor born? ").lower()
+# import datetime
+from datetime import datetime
 
-birthDate = [
-    "december 13, 1989",
+# Formats to recognize various date inputs
+birthdayFormats = [
+    "december 13 1989",
+    "dec 13 1989",
     "13 december 1989",
+    "13 dec 1989",
+    "13 of december 1989",
+    "13 of dec 1989",
+    "december 13th 1989",
+    "dec 13th 1989",
     "12/13/1989",
     "13/12/1989",
-    "12-13-1989",
-    "13-12-1989",
-    "12/13/89",
-    "13/12/89",
-    "12-13-89",
-    "13-12-89",
-    "dec 13 1989",
-    "13 dec 1989",
-    "13th of december, 1989",
-    "december 13th, 1989",
-    "december 13 1989",
-    "13th of december 1989",
-    "december 13th 1989"
+    "1989 december 13",
+    "1989 dec 13",
+    "1989 13 december",
+    "1989 13 dec",
+    "1989 december 13th",
+    "1989 dec 13th"
 ]
 
-birthday = [
+# Formats without year
+birthdayNoYear = [
     "december 13",
     "dec 13",
     "13th of december",
@@ -105,27 +107,39 @@ birthday = [
     "13/12"
 ]
 
-if date in birthDate:
-    print("Another point for you! We’re feeling 22!")
-    result += 1
-elif date in birthday:
-    year = input("Yes, but what year? ")
-    if year == "1989":
-        print("You're right, that answer will never to out of Style!")
+
+
+while True:
+    dateInput = input("When was Taylor born? ").lower().replace(",", "").replace(".", "").strip()
+    
+    if any(dateInput == birthday for birthday in birthdayFormats):
+        print("Another point for you! We’re feeling 22!")
         result += 1
-    else:
-        print("No, but I'll give you a hint, it's the name of her 5th album!")
-elif date == "1989":
-    date2 = input("That's the year but what day? ")
-    if date2 in birthday:
-        result +=1
-        print("That’s a hit! You get a point for style and grace!")
+        break
+    elif any(dateInput == birthday for birthday in birthdayNoYear):
+        year_input = input("Yes, but what year? ").strip()
+        if year_input == "1989":
+            print("You're right, that answer will never go out of Style!")
+            result += 1
+            break
+        else:
+            print("No, but I'll give you a hint, it's the name of her 5th album!")
+    elif dateInput == "1989":
+        dateInput2 = input("That's the year but what day? ").lower().replace(",", "").replace(".", "").strip()
+        if any(dateInput2 == birthday for birthday in birthdayNoYear):
+            result += 1
+            print("That’s a hit! You get a point for style and grace!")
+            break
+        else:
+            print("Incorrect, but hey, you're fearless, keep going!")
     else:
         print("Incorrect, but hey, you're fearless, keep going!")
-else:
-    print("Incorrect, but hey, you’re fearless, keep going!")
 
 print("You have " + str(result) + " points so far!")
+
+
+
+
 
 
 
@@ -133,7 +147,7 @@ print("You have " + str(result) + " points so far!")
 catNames = ["olivia benson", "detective olivia benson", "meredith grey", "benjamin button"]
 
 while catNames:
-    cat = input("Can you name all 3 of Taylor's cats? ").lower()
+    cat = input("Can you name each of Taylor's cats? ").lower()
     if cat in catNames:
         catNames.remove(cat)
         print(f"Flawless, {cat.title()} is one of her furbabies, can you guess all of them?")
@@ -228,4 +242,22 @@ match dessert:
 print("You have " + str(result) + " points so far!")
 
 
-# 11.  
+# 11. Awards throughout her career
+awards = int(input("How many awards has Taylor won throughout her career? "))
+
+match awards:
+    case 540:
+        print("You're Enchanted to score that point!")
+        result += 1
+    case _ if awards < 540:
+        print("Maybe at one point, but more now.")
+    case _ if awards > 540: 
+        print("Maybe by now, but not when this quiz was created.")
+    case _:
+        print("You missed it - Look what you made me do!")
+
+
+
+
+# 12. Go to fast food order
+# fastFood = ["cheeseburger", "fries", "chocolate shake"]
