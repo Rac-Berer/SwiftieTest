@@ -28,7 +28,7 @@ if artist in names:
 else:
     print("That's cool, but this is about Taylor Swift")
 print("You have " + str(result) + " points so far!")
-
+# ----------------------------------------------------------
 
 # 2. Using match/case for first song written
 firstSong = input("What was the first song she wrote? ").lower()
@@ -43,6 +43,7 @@ match firstSong:
         result = result
         print("Nice try, but I knew you were Trouble when you said that! Actually, 'Lucky You' was her first written song. Shake it off and try again later!")
 print("You have " + str(result) + " points so far!")
+# ----------------------------------------------------------
 
 # 3. The age when Taylor wrote her first song.
 age = input("How old was she when she wrote 'Lucky You'? ").lower()
@@ -54,7 +55,7 @@ else:
     print("Not really, but you've got this, just breathe")
 
 print("You have " + str(result) + " points so far!")
-
+# ----------------------------------------------------------
 
 # 4. Using if/else for middle name
 middleName = input("What is Taylor's middle name? ").lower()
@@ -67,7 +68,7 @@ else:
     print("That answer wasn’t Ready for It, but keep going!")
 
 print("You have " + str(result) + " points so far!")
-
+# ----------------------------------------------------------
 
 # 5. Prompt for Taylor's birthdate
 # import datetime
@@ -226,6 +227,7 @@ while instruments:
         result += 1
     elif instrument == "talented":
         print("Hell yeah she's talented, but onto the next question.")
+        break
     else:
         print(f" Sorry, {instrument} is not one (that I know of). Type 'talented' to stop guessing.")
 
